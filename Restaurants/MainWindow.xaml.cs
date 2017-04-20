@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,6 +24,33 @@ namespace Restaurants
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnHideLeftMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHideMenu("hideLeftMenu", btnHideLeftMenu, btnShowLeftMenu, pnlLeftMenu);
+        }
+
+        private void btnShowLeftMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHideMenu("showLeftMenu", btnHideLeftMenu, btnShowLeftMenu, pnlLeftMenu);
+        }
+
+        private void ShowHideMenu(string Storyboard, Button btnHide, Button btnShow, StackPanel pnl)
+        {
+            var sb = Resources[Storyboard] as Storyboard;
+            sb.Begin(pnl);
+
+            if (Storyboard.Contains("show"))
+            {
+                btnHide.Visibility = System.Windows.Visibility.Visible;
+                btnShow.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else if (Storyboard.Contains("hide"))
+            {
+                btnHide.Visibility = System.Windows.Visibility.Hidden;
+                btnShow.Visibility = System.Windows.Visibility.Visible;
+            }
         }
     }
 }
