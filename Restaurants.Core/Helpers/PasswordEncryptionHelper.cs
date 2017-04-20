@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Restaurants.Core.Helpers
 {
-    class PasswordEncryptionHelper
+    public class PasswordEncryptionHelper
     {
         public static string ComputeHash(string plainText, string hashAlgorithm, byte[] saltBytes)
         {
