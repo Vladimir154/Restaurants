@@ -6,7 +6,7 @@ namespace Restaurants.Core.Data
     public class AppDbContext : DbContext
     { 
         public AppDbContext()
-            : base("name=RestaurantDB")
+            : base("RestaurantDB")
         {
         }
 
