@@ -43,13 +43,13 @@ namespace Restaurants
 
             if (Storyboard.Contains("show"))
             {
-                btnHide.Visibility = System.Windows.Visibility.Visible;
-                btnShow.Visibility = System.Windows.Visibility.Hidden;
+                btnHide.Visibility = Visibility.Visible;
+                btnShow.Visibility = Visibility.Hidden;
             }
             else if (Storyboard.Contains("hide"))
             {
-                btnHide.Visibility = System.Windows.Visibility.Hidden;
-                btnShow.Visibility = System.Windows.Visibility.Visible;
+                btnHide.Visibility = Visibility.Hidden;
+                btnShow.Visibility = Visibility.Visible;
             }
         }
     }
