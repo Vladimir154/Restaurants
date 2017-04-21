@@ -75,11 +75,5 @@ namespace Restaurants.ViewModels
             new MainWindow().Show();
             NotifyWindowToClose();
         }
-
-        public void NotifyWindowToClose()
-        {
-            Messenger.Default.Send(new NotificationMessage(this, "CloseWindowsBoundToMe"));
-        }
-
     }
 }

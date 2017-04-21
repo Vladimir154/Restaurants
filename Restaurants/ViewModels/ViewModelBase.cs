@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
@@ -34,6 +35,11 @@ namespace Restaurants.ViewModels
                     ? true
                     : !CloseWindowFlag;
             }));
+        }
+
+        public void NotifyWindowToClose()
+        {
+            Messenger.Default.Send(new NotificationMessage(this, "CloseWindowsBoundToMe"));
         }
     }
 }

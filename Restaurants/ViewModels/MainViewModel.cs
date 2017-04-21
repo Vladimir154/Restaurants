@@ -6,6 +6,7 @@ using Restaurants.Core.Data;
 using System.Linq;
 using System.Data.Entity;
 using System.Windows;
+using Restaurants.Views;
 
 namespace Restaurants.ViewModels
 {
@@ -76,9 +77,11 @@ namespace Restaurants.ViewModels
         public RelayCommand AddUserCommand { get; set; }
         void AddUser(object parameter)
         {
-            if (parameter == null) return;
-            _dbContext.Users.Add(new User {Username="aa" });
-            _dbContext.SaveChanges();
+            new InputWindow().ShowDialog();
+
+            _dbContext.Users.Load();
+            Users = _dbContext.Users.Local;
+            RaisePropertyChanged("Users");
         }
 
         public RelayCommand EditUserCommand { get; set; }
@@ -92,6 +95,8 @@ namespace Restaurants.ViewModels
 
             _dbContext.Entry((SelectedUser as User)).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
+            _dbContext.Users.Load();
+            Users = _dbContext.Users.Local;
             RaisePropertyChanged("Users");
         }
 
