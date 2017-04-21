@@ -85,7 +85,10 @@ namespace Restaurants.ViewModels
         async void EditUser(object parameter)
         {
             if (SelectedUser == null)
+            {
+                MessageBox.Show("Cначала выберите пользователя, которого хотите изменить", "Помощь", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 return;
+            }
 
             _dbContext.Entry((SelectedUser as User)).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
@@ -97,7 +100,7 @@ namespace Restaurants.ViewModels
         {
             if (SelectedUser == null)
             {
-                MessageBox.Show("a");
+                MessageBox.Show("Сначала выберите пользователя, которого хотите удалить", "Помощь", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 return;
             }
             
