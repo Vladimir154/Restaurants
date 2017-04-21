@@ -4,14 +4,14 @@ namespace Restaurants.Core.Data
     using System.Data.Entity;
 
     public class AppDbContext : DbContext
-    { 
+    {
         public AppDbContext()
-            : base("RestaurantDB")
+            : base("RestaurantsDB")
         {
         }
 
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }
