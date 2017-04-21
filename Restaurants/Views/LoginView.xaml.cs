@@ -22,7 +22,7 @@ namespace Restaurants.Views
         {
             if (!await AuthenticationService.Register(UsernameTxt.Text, PasswordTxt.Password))
             {
-                MessageBox.Show("Username is taken");
+                MessageBox.Show("Имя уже занято", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -34,7 +34,7 @@ namespace Restaurants.Views
         {
             if (!await AuthenticationService.Login(UsernameTxt.Text, PasswordTxt.Password))
             {
-                MessageBox.Show("Username is taken");
+                MessageBox.Show("Неверное имя пользователя или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

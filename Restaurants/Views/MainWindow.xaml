@@ -6,25 +6,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Restaurant" Height="600" Width="800"
-         DataContext="{DynamicResource MainViewModel}" >
+         DataContext="{DynamicResource MainViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
     <Window.Resources>
         <vm:MainViewModel x:Key="MainViewModel"/>
         <Storyboard x:Key="showLeftMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="hideLeftMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-300,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
     </Window.Resources>
     <Grid>
-        <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="800" HorizontalAlignment="Left" Margin="-150,0,0,0">
-            <Border BorderThickness="1" Width="150" Background="#e1dede" >
+        <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="800" HorizontalAlignment="Left" Margin="-300,0,0,0">
+            <Border BorderThickness="1" Width="300" Background="#e1dede" >
 
             </Border>
 
             <Grid>
-                <Button Name="btnHideLeftMenu" Width="20" Height="20" Content="⇦" Visibility="Hidden" Click="btnHideLeftMenu_Click"/>
-                <Button Name="btnShowLeftMenu" Width="20" Height="20" Content="⇨" Click="btnShowLeftMenu_Click"/>
+                <Button Name="btnHideLeftMenu" Width="60" Height="20" Content="СВЕРНУТЬ" Visibility="Hidden" Click="btnHideLeftMenu_Click">
+                    <Button.LayoutTransform>
+                        <RotateTransform Angle="-90"></RotateTransform>
+                    </Button.LayoutTransform>
+                </Button>
+                <Button Name="btnShowLeftMenu" Width="60" Height="20" Content="МЕНЮ" Click="btnShowLeftMenu_Click">
+                    <Button.LayoutTransform>
+                        <RotateTransform Angle="-90"></RotateTransform>
+                    </Button.LayoutTransform>
+                </Button>
             </Grid>
 
         </StackPanel>
@@ -36,13 +44,16 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <DataGrid ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" HorizontalAlignment="Center" Width="700" Margin="0,0,0,0"/>
+                        <DataGrid ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,10,0,0" Height="500"/>
                     </StackPanel>
-                    <TextBox x:Name="tb1" Text="{Binding TextProperty1, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-                    <TextBlock FontWeight="Bold" Margin="5" Text="The TextBox says '"><Run Text="{Binding TextProperty1}"/><Run Text="'"/></TextBlock>
-                </StackPanel>
+             </StackPanel>
             </ScrollViewer>
-            <Button Grid.Row="1" Content="Add person" Command="{Binding AddUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Margin="5" Focusable="False"/>
         </Grid>
+        <TextBlock Text="Фильтр:" Margin="25,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="FilterQueryTxtBox" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Content="Add user" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
+        <Button Content="Edit user" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
+        <Button Content="Delete user" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
+
     </Grid>
 </Window>
