@@ -51,9 +51,9 @@ namespace Restaurants.ViewModels
         }
 
         public RelayCommand LoginCommand { get; set; }
-        async void Login(object parameter)
+        void Login(object parameter)
         {
-            if (!await AuthenticationService.Login(Username, Password))
+            if (!AuthenticationService.Login(Username, Password))
             {
                 MessageBox.Show("Неверное имя пользователя или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -64,9 +64,9 @@ namespace Restaurants.ViewModels
         }
 
         public RelayCommand RegisterCommand { get; set; }
-        async void Register(object parameter)
+        void Register(object parameter)
         {
-            if (!await AuthenticationService.Register(Username, Password))
+            if (!AuthenticationService.Register(Username, Password))
             {
                 MessageBox.Show("Имя уже занято", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;

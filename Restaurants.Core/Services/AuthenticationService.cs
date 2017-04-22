@@ -10,7 +10,7 @@ namespace Restaurants.Core.Services
     {
         private static AppDbContext _dbContext = new AppDbContext();
 
-        public static async Task<bool> Register(string username, string password)
+        public static bool Register(string username, string password)
         {
             if (_dbContext.Users.FirstOrDefault(u => u.Username == username) != null)
                 return false;
@@ -23,11 +23,11 @@ namespace Restaurants.Core.Services
                     Role = "user"
                 });
 
-            await _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return true;
         }
 
-        public static async Task<bool> Login(string username, string password)
+        public static bool Login(string username, string password)
         {
             var user = _dbContext.Users.FirstOrDefault(u => u.Username == username);
 
