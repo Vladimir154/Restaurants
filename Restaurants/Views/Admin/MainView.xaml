@@ -7,22 +7,22 @@
         xmlns:admin="clr-namespace:Restaurants.ViewModels.Admin"
         mc:Ignorable="d"
         Title="Restaurant" Height="600" Width="800"
-         DataContext="{DynamicResource MainViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+         DataContext="{DynamicResource MainViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" >
     <Window.Resources>
         <admin:MainViewModel x:Key="MainViewModel"/>
         <Storyboard x:Key="showLeftMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-200,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="hideLeftMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-300,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-200,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
     </Window.Resources>
     <Grid>
-        <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="800" HorizontalAlignment="Left" Margin="-300,0,0,0">
-            <Border BorderThickness="1" Width="300" Background="#e1dede" >
+        <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="800" HorizontalAlignment="Left" Margin="-200,0,0,0">
+            <Border BorderThickness="1" Width="200" Background="#e1dede" >
                 <StackPanel>
                     <StackPanel VerticalAlignment="Top" Width="Auto" Height="50" Margin="20 20 0 0">
-                        <Label Content="Настройки" FontSize="30">
+                        <Label Content="Настройки" FontSize="20">
                             <Label.Style>
                                 <Style TargetType="Label">
                                     <Setter Property="Foreground" Value="Black"/>
@@ -36,7 +36,7 @@
                         </Label>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Top" Width="Auto" Height="50" Margin="20 20 0 0">
-                        <Label Content="Справка" FontSize="30">
+                        <Label Content="Справка" FontSize="20">
                             <Label.Style>
                                 <Style TargetType="Label">
                                     <Setter Property="Foreground" Value="Black"/>
@@ -50,7 +50,7 @@
                         </Label>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Top" Width="Auto" Height="50" Margin="20 20 0 0">
-                        <Label Content="О программе" FontSize="30">
+                        <Label Content="О программе" FontSize="20">
                             <Label.Style>
                                 <Style TargetType="Label">
                                     <Setter Property="Foreground" Value="Black"/>
@@ -64,7 +64,7 @@
                         </Label>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Top" Width="Auto" Height="50" Margin="20 20 0 0">
-                        <Label Content="Выход" FontSize="30">
+                        <Label Content="Выход" FontSize="20">
                             <Label.Style>
                                 <Style TargetType="Label">
                                     <Setter Property="Foreground" Value="Black"/>
