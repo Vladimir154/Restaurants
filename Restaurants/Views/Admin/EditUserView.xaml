@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Restaurants.ViewModels" 
         xmlns:local="clr-namespace:Restaurants.Views"
+        xmlns:admin="clr-namespace:Restaurants.ViewModels.Admin"
         mc:Ignorable="d"
         Title="InputWindow" Height="200" Width="300" ResizeMode="NoResize" WindowStyle="None"
         DataContext="{DynamicResource EditUserViewModel}" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <vm:EditUserViewModel x:Key="EditUserViewModel"/>
+        <admin:EditUserViewModel x:Key="EditUserViewModel"/>
     </Window.Resources>
 
     <Grid>

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Data.Entity;
+using System.Linq;
+using System.Windows;
+using Restaurants.Core.Data;
 using Restaurants.Core.Models;
 using Restaurants.Helpers;
-using Restaurants.Core.Data;
-using System.Linq;
-using System.Data.Entity;
-using System.Windows;
 using Restaurants.Views;
 
-namespace Restaurants.ViewModels
+namespace Restaurants.ViewModels.Admin
 {
     class MainViewModel : ViewModelBase
     {

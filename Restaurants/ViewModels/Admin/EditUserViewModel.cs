@@ -1,9 +1,8 @@
-﻿
+﻿using System.Windows;
 using GalaSoft.MvvmLight.Messaging;
 using Restaurants.Core.Models;
-using System.Windows;
 
-namespace Restaurants.ViewModels
+namespace Restaurants.ViewModels.Admin
 {
     class EditUserViewModel : UserInputBaseViewModel
     {

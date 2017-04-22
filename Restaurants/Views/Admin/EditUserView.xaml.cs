@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using Restaurants.Core.Models;
 using Restaurants.ViewModels;
+using Restaurants.ViewModels.Admin;
 
 namespace Restaurants.Views
 {

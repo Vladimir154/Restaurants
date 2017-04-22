@@ -1,8 +1,6 @@
-﻿using Restaurants.Core.Data;
-using Restaurants.Helpers;
-using System.Windows;
+﻿using System.Windows;
 
-namespace Restaurants.ViewModels
+namespace Restaurants.ViewModels.Admin
 {
     class AddUserViewModel : UserInputBaseViewModel
     {

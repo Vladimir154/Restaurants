@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:vm="clr-namespace:Restaurants.ViewModels" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:admin="clr-namespace:Restaurants.ViewModels.Admin"
         mc:Ignorable="d"
         Title="Restaurant" Height="600" Width="800"
          DataContext="{DynamicResource MainViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
     <Window.Resources>
-        <vm:MainViewModel x:Key="MainViewModel"/>
+        <admin:MainViewModel x:Key="MainViewModel"/>
         <Storyboard x:Key="showLeftMenu" >
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
