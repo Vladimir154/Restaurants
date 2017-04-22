@@ -7,18 +7,19 @@
         xmlns:local="clr-namespace:Restaurants.Views"
         mc:Ignorable="d"
         Title="LoginView" Height="250" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" MouseDown="Window_MouseDown"
-        DataContext="{DynamicResource LoginViewModel}">
+        DataContext="{DynamicResource LoginViewModel}"
+        Background="{Binding WindowBackgroundColor}">
     <Window.Resources>
         <vm:LoginViewModel x:Key="LoginViewModel"/>
     </Window.Resources>
     <Grid>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="20,70,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="{Binding FontColor}" Content="Username" HorizontalAlignment="Left" Margin="20,70,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="{Binding FontColor}" Content="Password" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top"/>
 
-        <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="110,70,0,0" VerticalAlignment="Top" Width="150"/>
-        <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="110,110,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="110,70,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="110,110,0,0" VerticalAlignment="Top" Width="150"/>
         <Button Command="{Binding LoginCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#afcbf7" Content="Login" HorizontalAlignment="Left" Margin="50,200,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Command="{Binding RegisterCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#afcbf7" Content="Register" HorizontalAlignment="Right" Margin="0,200,50,0" VerticalAlignment="Top" Width="75"/>
-        <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="White" Content="x" HorizontalAlignment="right" Margin="0,5,10,0" VerticalAlignment="Top" Width="15" Click="Button_Click"/>
+        <Button Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="x" HorizontalAlignment="right" Margin="0,5,10,0" VerticalAlignment="Top" Width="15" Click="Button_Click"/>
     </Grid>
 </Window>
