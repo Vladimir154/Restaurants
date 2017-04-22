@@ -22,6 +22,7 @@ namespace Restaurants.ViewModels.Admin
             AddUserCommand = new RelayCommand(AddUser);
             EditUserCommand = new RelayCommand(EditUser);
             DeleteUserCommand = new RelayCommand(DeleteUser);
+            OpenSettingsCommand = new RelayCommand(OpenSettings);
         }
 
         #region Fields
@@ -122,6 +123,15 @@ namespace Restaurants.ViewModels.Admin
             _dbContext.Users.Load();
             Users = new ObservableCollection<User>(_dbContext.Users);
             RaisePropertyChanged("Users");
+        }
+
+        public RelayCommand OpenSettingsCommand { get; set; }
+        void OpenSettings(object parameter)
+        {
+            new SettingsView().ShowDialog();
+            RaisePropertyChanged("WindowBackgroundColor");
+            RaisePropertyChanged("BorderBackgroundColor");
+            RaisePropertyChanged("FontColor");
         }
         #endregion
 

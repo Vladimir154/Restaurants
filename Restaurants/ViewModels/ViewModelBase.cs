@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
+using Restaurants.Core.Services;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -14,6 +15,30 @@ namespace Restaurants.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public string WindowBackgroundColor
+        {
+            get
+            {
+                return SettingsService.CurrentTheme == Core.Enums.ThemeEnum.Light ? "#fff" : "#383737";
+            }
+        }
+
+        public string BorderBackgroundColor
+        {
+            get
+            {
+                return SettingsService.CurrentTheme == Core.Enums.ThemeEnum.Light ? "#e1dede" : "#2e2e2e";
+            }
+        }
+
+        public string FontColor
+        {
+            get
+            {
+                return SettingsService.CurrentTheme == Core.Enums.ThemeEnum.Light ? "#000" : "#fff";
+            }
+        }
 
         //Extra Stuff, shows why a base ViewModel is useful
         bool? _CloseWindowFlag;

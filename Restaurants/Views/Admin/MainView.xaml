@@ -7,7 +7,8 @@
         xmlns:admin="clr-namespace:Restaurants.ViewModels.Admin"
         mc:Ignorable="d"
         Title="Restaurant" Height="600" Width="800"
-         DataContext="{DynamicResource MainViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" >
+         DataContext="{DynamicResource MainViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Background="{Binding WindowBackgroundColor}">
     <Window.Resources>
         <admin:MainViewModel x:Key="MainViewModel"/>
         <Storyboard x:Key="showLeftMenu" >
@@ -19,16 +20,21 @@
     </Window.Resources>
     <Grid>
         <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="800" HorizontalAlignment="Left" Margin="-200,0,0,0">
-            <Border BorderThickness="1" Width="200" Background="#e1dede" >
+            <Border BorderThickness="1" Width="200" Background="{Binding BorderBackgroundColor}" >
                 <StackPanel>
                     <StackPanel VerticalAlignment="Top" Width="Auto" Height="50" Margin="20 20 0 0">
                         <Label Content="Настройки" FontSize="20">
+                            <Label.InputBindings>
+                                <MouseBinding Command="{Binding OpenSettingsCommand}" MouseAction="LeftClick" />
+                            </Label.InputBindings>
                             <Label.Style>
                                 <Style TargetType="Label">
-                                    <Setter Property="Foreground" Value="Black"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Foreground" Value="DimGray"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="False">
+                                            <Setter Property="Foreground" Value="{Binding FontColor}"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -39,10 +45,12 @@
                         <Label Content="Справка" FontSize="20">
                             <Label.Style>
                                 <Style TargetType="Label">
-                                    <Setter Property="Foreground" Value="Black"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Foreground" Value="DimGray"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="False">
+                                            <Setter Property="Foreground" Value="{Binding FontColor}"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -53,10 +61,12 @@
                         <Label Content="О программе" FontSize="20">
                             <Label.Style>
                                 <Style TargetType="Label">
-                                    <Setter Property="Foreground" Value="Black"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Foreground" Value="DimGray"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="False">
+                                            <Setter Property="Foreground" Value="{Binding FontColor}"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -67,10 +77,12 @@
                         <Label Content="Выход" FontSize="20">
                             <Label.Style>
                                 <Style TargetType="Label">
-                                    <Setter Property="Foreground" Value="Black"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Foreground" Value="DimGray"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="False">
+                                            <Setter Property="Foreground" Value="{Binding FontColor}"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -81,12 +93,12 @@
             </Border>
             
             <Grid>
-                <Button Name="btnHideLeftMenu" Width="60" Height="20" Content="СВЕРНУТЬ" Visibility="Hidden" Click="btnHideLeftMenu_Click">
+                <Button Name="btnHideLeftMenu" Width="60" Height="20" Content="СВЕРНУТЬ" Visibility="Hidden" Click="btnHideLeftMenu_Click" Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}">
                     <Button.LayoutTransform>
                         <RotateTransform Angle="-90"></RotateTransform>
                     </Button.LayoutTransform>
                 </Button>
-                <Button Name="btnShowLeftMenu" Width="60" Height="20" Content="МЕНЮ" Click="btnShowLeftMenu_Click">
+                <Button Name="btnShowLeftMenu" Width="60" Height="20" Content="МЕНЮ" Click="btnShowLeftMenu_Click" Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}">
                     <Button.LayoutTransform>
                         <RotateTransform Angle="-90"></RotateTransform>
                     </Button.LayoutTransform>
@@ -102,13 +114,19 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <DataGrid IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,10,0,0" Height="500"/>
+                        <DataGrid Background="{Binding WindowBackground}" IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,10,0,0" Height="500">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Background" Value="{Binding BorderBackgroundColor}"></Setter>
+                                </Style>
+                            </DataGrid.Resources>
+                        </DataGrid>
                     </StackPanel>
              </StackPanel>
             </ScrollViewer>
         </Grid>
-        <TextBlock Text="Фильтр:" Margin="25,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="FilterQueryTxtBox" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Text="Фильтр:" Foreground="{Binding FontColor}" Margin="25,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="FilterQueryTxtBox" Background="{Binding BorderBackgroundColor}" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
         <Button Content="Add user" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
         <Button Content="Edit user" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
         <Button Content="Delete user" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
