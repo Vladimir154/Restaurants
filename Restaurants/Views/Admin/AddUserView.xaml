@@ -8,18 +8,19 @@
         xmlns:admin="clr-namespace:Restaurants.ViewModels.Admin"
         mc:Ignorable="d"
         Title="InputWindow" Height="200" Width="300" ResizeMode="NoResize" WindowStyle="None"
-        DataContext="{DynamicResource AddUserViewModel}" WindowStartupLocation="CenterScreen">
+        DataContext="{DynamicResource AddUserViewModel}" WindowStartupLocation="CenterScreen"
+        Background="{Binding WindowBackgroundColor}" MouseDown="Window_MouseDown">
     <Window.Resources>
         <admin:AddUserViewModel x:Key="AddUserViewModel"/>
     </Window.Resources>
     
     <Grid>
-        <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,27,0,0"/>
-        <Label Content="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,56,0,0"/>
-        <Label Content="Role" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,85,0,0"/>
-        <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,30,30,0"/>
-        <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,60,30,0"/>
-        <TextBox Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,90,30,0"/>
+        <Label Foreground="{Binding FontColor}" Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,27,0,0"/>
+        <Label Foreground="{Binding FontColor}" Content="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,56,0,0"/>
+        <Label Foreground="{Binding FontColor}" Content="Role" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,85,0,0"/>
+        <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,30,30,0"/>
+        <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,60,30,0"/>
+        <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,90,30,0"/>
         <Button Command="{Binding CancelCommand}"  Background="#ef624c" Content="CANCEL" Width="80" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,110,10"/>
         <Button Command="{Binding ConfirmCommand}" Background="#52ea8f" Content="OK" Width="80" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,-110,10"/>
     </Grid>
