@@ -1,29 +1,19 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Restaurants.Core.Models;
+using Restaurants.ViewModels;
 
 namespace Restaurants.Views
 {
     /// <summary>
-    /// Interaction logic for InputWindow.xaml
+    /// Interaction logic for EditUserView.xaml
     /// </summary>
-    public partial class InputWindow : Window
+    public partial class EditUserView
     {
-        public InputWindow()
+        public EditUserView(User user)
         {
             InitializeComponent();
-
+            ((EditUserViewModel)DataContext).User = user;
+            Messenger.Default.Send(new NotificationMessage(this, "RaisePropertyChanged"));
             Messenger.Default.Register<NotificationMessage>(this, (nm) =>
             {
                 if (nm.Notification == "CloseWindowsBoundToMe")

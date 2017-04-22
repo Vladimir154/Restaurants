@@ -8,7 +8,7 @@ namespace Restaurants.Core.Services
 {
     public class AuthenticationService
     {
-        private static AppDbContext _dbContext = new AppDbContext();
+        private static readonly AppDbContext _dbContext = new AppDbContext();
 
         public static bool Register(string username, string password)
         {
@@ -34,10 +34,7 @@ namespace Restaurants.Core.Services
             if (user == null)
                 return false;
 
-            if(PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password))
-                return true;
-
-            return false;
+            return PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password);
         }
     }
 }

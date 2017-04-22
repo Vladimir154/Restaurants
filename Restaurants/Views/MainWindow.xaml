@@ -44,7 +44,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <DataGrid ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,10,0,0" Height="500"/>
+                        <DataGrid IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,10,0,0" Height="500"/>
                     </StackPanel>
              </StackPanel>
             </ScrollViewer>

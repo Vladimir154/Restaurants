@@ -29,7 +29,7 @@ namespace Restaurants.ViewModels
         private ObservableCollection<User> _users;
         public ObservableCollection<User> Users
         {
-            get => _users;
+            get { return _users; }
             set
             {
                 _users = value;
@@ -77,7 +77,7 @@ namespace Restaurants.ViewModels
         public RelayCommand AddUserCommand { get; set; }
         void AddUser(object parameter)
         {
-            new InputWindow().ShowDialog();
+            new AddUserView().ShowDialog();
 
             _dbContext.Users.Load();
             Users = _dbContext.Users.Local;
@@ -85,32 +85,43 @@ namespace Restaurants.ViewModels
         }
 
         public RelayCommand EditUserCommand { get; set; }
-        async void EditUser(object parameter)
+        void EditUser(object parameter)
         {
-            if (SelectedUser == null)
+            if (SelectedUser == null && !(SelectedUser is User))
             {
                 MessageBox.Show("Cначала выберите пользователя, которого хотите изменить", "Помощь", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 return;
             }
 
-            _dbContext.Entry((SelectedUser as User)).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+
+            new EditUserView(SelectedUser as User).ShowDialog();
+
             _dbContext.Users.Load();
-            Users = _dbContext.Users.Local;
+            Users = new ObservableCollection<User>(_dbContext.Users);
             RaisePropertyChanged("Users");
         }
 
         public RelayCommand DeleteUserCommand { get; set; }
         async void DeleteUser(object parameter)
         {
-            if (SelectedUser == null)
+            var user = SelectedUser as User;
+            if (user == null || user.Username == null)
             {
                 MessageBox.Show("Сначала выберите пользователя, которого хотите удалить", "Помощь", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 return;
             }
-            
-            _dbContext.Users.Remove(SelectedUser as User);
+
+            var deleteConfirmed = MessageBox.Show($"Удалить пользователя\n\nUsername: {user.Username}\nRole: {user.Role}",
+                                                "Вы уверены?", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+
+            if (deleteConfirmed == MessageBoxResult.No)
+                return;
+
+            _dbContext.Users.Remove(user);
             await _dbContext.SaveChangesAsync();
+
+            _dbContext.Users.Load();
+            Users = new ObservableCollection<User>(_dbContext.Users);
             RaisePropertyChanged("Users");
         }
         #endregion

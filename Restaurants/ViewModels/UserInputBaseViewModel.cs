@@ -1,15 +1,20 @@
-﻿using Restaurants.Core.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Restaurants.Core.Data;
 using Restaurants.Helpers;
 
 namespace Restaurants.ViewModels
 {
-    class InputViewModel : ViewModelBase
+    abstract class UserInputBaseViewModel : ViewModelBase
     {
-        private readonly AppDbContext _dbContext;
+        protected readonly AppDbContext DbContext;
 
-        public InputViewModel()
+        protected UserInputBaseViewModel()
         {
-            _dbContext = new AppDbContext();
+            DbContext = new AppDbContext();
 
             ConfirmCommand = new RelayCommand(Confirm);
             CancelCommand = new RelayCommand(Cancel);
@@ -58,23 +63,13 @@ namespace Restaurants.ViewModels
         }
 
         public RelayCommand ConfirmCommand { get; set; }
-        async void Confirm(object param)
-        {
-            _dbContext.Users.Add(new Core.Models.User
-            {
-                Username = Username,
-                Password = Password,
-                Role = Role
-            });
-
-            await _dbContext.SaveChangesAsync();
-            NotifyWindowToClose();
-        }
+        protected abstract void Confirm(object param);
 
         public RelayCommand CancelCommand { get; set; }
-        void Cancel(object param)
+        protected void Cancel(object param)
         {
             NotifyWindowToClose();
         }
+
     }
 }
