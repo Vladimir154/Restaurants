@@ -53,6 +53,7 @@ namespace Restaurants.ViewModels
         public RelayCommand LoginCommand { get; set; }
         void Login(object parameter)
         {
+            // авторизация через сервис
             if (!AuthenticationService.Login(Username, Password))
             {
                 MessageBox.Show("Неверное имя пользователя или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -66,6 +67,7 @@ namespace Restaurants.ViewModels
         public RelayCommand RegisterCommand { get; set; }
         void Register(object parameter)
         {
+            // регистрация через сервис
             if (!AuthenticationService.Register(Username, Password))
             {
                 MessageBox.Show("Имя уже занято", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);

@@ -19,6 +19,7 @@ namespace Restaurants.ViewModels.Admin
             _dbContext.Users.Load();
             Users = _dbContext.Users.Local;
 
+            // инициализация команд
             AddUserCommand = new RelayCommand(AddUser);
             EditUserCommand = new RelayCommand(EditUser);
             DeleteUserCommand = new RelayCommand(DeleteUser);
@@ -77,8 +78,10 @@ namespace Restaurants.ViewModels.Admin
         public RelayCommand AddUserCommand { get; set; }
         void AddUser(object parameter)
         {
+            // показать окно добавления пользователя
             new AddUserView().ShowDialog();
 
+            // подгрузить добавленые данные
             _dbContext.Users.Load();
             Users = _dbContext.Users.Local;
             RaisePropertyChanged("Users");
@@ -93,7 +96,7 @@ namespace Restaurants.ViewModels.Admin
                 return;
             }
 
-
+            // показать окно редактирования данных пользователя
             new EditUserView(SelectedUser as User).ShowDialog();
 
             _dbContext.Users.Load();
@@ -117,9 +120,11 @@ namespace Restaurants.ViewModels.Admin
             if (deleteConfirmed == MessageBoxResult.No)
                 return;
 
+            // удаление пользователя
             _dbContext.Users.Remove(user);
             await _dbContext.SaveChangesAsync();
 
+            // обновление таблицы
             _dbContext.Users.Load();
             Users = new ObservableCollection<User>(_dbContext.Users);
             RaisePropertyChanged("Users");
@@ -128,6 +133,7 @@ namespace Restaurants.ViewModels.Admin
         public RelayCommand OpenSettingsCommand { get; set; }
         void OpenSettings(object parameter)
         {
+            // открытие окна настроек
             new SettingsView().ShowDialog();
             RaisePropertyChanged("WindowBackgroundColor");
             RaisePropertyChanged("BorderBackgroundColor");

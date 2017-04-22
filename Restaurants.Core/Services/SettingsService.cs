@@ -22,6 +22,7 @@ namespace Restaurants.Core.Services
             }
         }
 
+        // получение темы с реестра
         static ThemeEnum GetCurrentTheme()
         {
             var currentTheme = Registry.GetValue(keyName, "Theme", null);
@@ -33,6 +34,7 @@ namespace Restaurants.Core.Services
             return ThemeEnum.Light;
         }
 
+        // сохранение темы в реестр
         static void SetCurrentTheme(ThemeEnum theme)
         {
             if(theme == ThemeEnum.Light)

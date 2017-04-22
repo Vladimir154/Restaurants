@@ -66,6 +66,7 @@ namespace Restaurants.ViewModels.Admin
                 return;
             }
 
+            // изменение пользователя в БД
             DbContext.Entry(User).State = System.Data.Entity.EntityState.Modified;
             DbContext.SaveChanges();
             NotifyWindowToClose();

@@ -12,6 +12,7 @@ namespace Restaurants.ViewModels.Admin
                 return;
             }
 
+            // добавляем пользователя в БД
             DbContext.Users.Add(new Core.Models.User
             {
                 Username = Username,
