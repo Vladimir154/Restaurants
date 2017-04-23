@@ -3,6 +3,7 @@ using Restaurants.Core.Models;
 using System.Threading.Tasks;
 using System.Linq;
 using Restaurants.Core.Helpers;
+using Restaurants.Core.Enums;
 
 namespace Restaurants.Core.Services
 {
@@ -20,7 +21,7 @@ namespace Restaurants.Core.Services
                 {
                     Username = username,
                     Password = PasswordEncryptionHelper.ComputeHash(password, "SHA512", null),
-                    Role = "user"
+                    Role = "visitor"
                 });
 
             _dbContext.SaveChanges();
@@ -35,6 +36,21 @@ namespace Restaurants.Core.Services
                 return false;
 
             return PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password);
+        }
+
+        public static RoleEnum GetRole(string username)
+        {
+            var user = _dbContext.Users.FirstOrDefault(u => u.Username == username);
+
+            switch (user?.Role)
+            {
+                case "manager":
+                    return RoleEnum.Manager;
+                case "admin":
+                    return RoleEnum.Admin;
+                default:
+                    return RoleEnum.Visitor;
+            }
         }
     }
 }

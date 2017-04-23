@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AppDbContext.cs" />
+    <Compile Include="Enums\RoleEnum.cs" />
     <Compile Include="Enums\ThemeEnum.cs" />
     <Compile Include="Helpers\PasswordEncryptionHelper.cs" />
     <Compile Include="Models\Order.cs" />

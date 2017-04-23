@@ -26,6 +26,8 @@ namespace Restaurants.Core.Data
                 Password = PasswordEncryptionHelper.ComputeHash("1111", "SHA512", null),
                 Role = "admin"
             });
+
+            context.SaveChanges();
         }
 
         public class DropCreateIfModelChangesInitializer : DropCreateDatabaseIfModelChanges<AppDbContext>

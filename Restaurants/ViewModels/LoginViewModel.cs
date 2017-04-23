@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using NLog;
+using Restaurants.Core.Enums;
 using Restaurants.Core.Services;
 using Restaurants.Helpers;
 using System.Windows;
@@ -41,7 +42,7 @@ namespace Restaurants.ViewModels
         {
             get
             {
-                return new string('*', _password.Length);
+                return _password;
             }
             set
             {
@@ -87,7 +88,20 @@ namespace Restaurants.ViewModels
             }
 
             logger.Info($"User {Username} registered");
-            new MainWindow().Show();
+
+            switch(AuthenticationService.GetRole(Username))
+            {
+                case RoleEnum.Manager:
+                    new MainWindow().Show();
+                    break;
+                case RoleEnum.Admin:
+                    new MainWindow().Show();
+                    break;
+                default:
+                    new MainWindow().Show();
+                    break;
+            }
+
             NotifyWindowToClose();
         }
 

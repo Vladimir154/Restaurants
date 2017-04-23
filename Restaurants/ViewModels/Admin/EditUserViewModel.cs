@@ -66,6 +66,12 @@ namespace Restaurants.ViewModels.Admin
                 return;
             }
 
+            if(Role != "visitor" && Role != "manager" && Role != "admin")
+            {
+                MessageBox.Show("Возможные роли:\n\nvisitor\nmanager\nadmin", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             // изменение пользователя в БД
             DbContext.Entry(User).State = System.Data.Entity.EntityState.Modified;
             DbContext.SaveChanges();
