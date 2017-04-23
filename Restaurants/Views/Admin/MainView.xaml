@@ -114,10 +114,21 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <DataGrid Background="{Binding WindowBackground}" IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,30,0,0" Height="500">
+                        <DataGrid Background="{Binding WindowBackground}"  AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,30,0,0" Height="500">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id"
+                                    Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="Username"
+                                     Binding="{Binding Username}"/>
+                                <DataGridTextColumn Header="Role"
+                                    Binding="{Binding Role}"/>
+                            </DataGrid.Columns>
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridRow">
                                     <Setter Property="Background" Value="{Binding BorderBackgroundColor}"></Setter>
+                                </Style>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Foreground" Value="{Binding FontColor}"></Setter>
                                 </Style>
                             </DataGrid.Resources>
                         </DataGrid>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Restaurants.Core.Services;
+using System.Windows;
 
 namespace Restaurants.ViewModels.Admin
 {
@@ -13,14 +14,12 @@ namespace Restaurants.ViewModels.Admin
             }
 
             // добавляем пользователя в БД
-            DbContext.Users.Add(new Core.Models.User
+            if(!AuthenticationService.Register(Username, Password))
             {
-                Username = Username,
-                Password = Password,
-                Role = Role
-            });
+                MessageBox.Show("Имя занято", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            DbContext.SaveChanges();
             NotifyWindowToClose();
         }
 

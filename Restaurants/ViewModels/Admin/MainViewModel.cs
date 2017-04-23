@@ -32,7 +32,7 @@ namespace Restaurants.ViewModels.Admin
         {
             get
             {
-                return new ObservableCollection<User>(_users.Select(u => { u.Password = "****"; return u; }).ToList());
+                return _users;
             }
             set
             {
