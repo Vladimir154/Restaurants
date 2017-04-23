@@ -17,6 +17,9 @@
         <Storyboard x:Key="hideLeftMenu">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-200,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
+        <Style x:Key="GridCellStyle" TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
+            <Setter Property="Background" Value="White"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="800" HorizontalAlignment="Left" Margin="-200,0,0,0">
@@ -114,21 +117,18 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <DataGrid Background="{Binding WindowBackground}"  AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,30,0,0" Height="500">
+                        <DataGrid Background="{Binding WindowBackground}" CellStyle="{StaticResource GridCellStyle}" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,30,0,0" Height="500">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Id"
                                     Binding="{Binding Id}"/>
                                 <DataGridTextColumn Header="Username"
-                                     Binding="{Binding Username}"/>
+                                     Binding="{Binding Username}" Width="*"/>
                                 <DataGridTextColumn Header="Role"
                                     Binding="{Binding Role}"/>
                             </DataGrid.Columns>
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridRow">
                                     <Setter Property="Background" Value="{Binding BorderBackgroundColor}"></Setter>
-                                </Style>
-                                <Style TargetType="DataGridCell">
-                                    <Setter Property="Foreground" Value="{Binding FontColor}"></Setter>
                                 </Style>
                             </DataGrid.Resources>
                         </DataGrid>
