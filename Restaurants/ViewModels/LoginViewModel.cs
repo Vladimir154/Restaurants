@@ -66,7 +66,21 @@ namespace Restaurants.ViewModels
             }
 
             logger.Info($"User '{Username}' logged in");
-            new MainWindow().Show();
+            switch (AuthenticationService.GetRole(Username))
+            {
+                case RoleEnum.Manager:
+                    new Views.Manager.MainView().Show();
+                    break;
+                case RoleEnum.Waiter:
+                    new MainWindow().Show();
+                    break;
+                case RoleEnum.Admin:
+                    new MainWindow().Show();
+                    break;
+                default:
+                    new MainWindow().Show();
+                    break;
+            }
             NotifyWindowToClose();
         }
 
@@ -92,6 +106,9 @@ namespace Restaurants.ViewModels
             switch(AuthenticationService.GetRole(Username))
             {
                 case RoleEnum.Manager:
+                    new Views.Manager.MainView().Show();
+                    break;
+                case RoleEnum.Waiter:
                     new MainWindow().Show();
                     break;
                 case RoleEnum.Admin:

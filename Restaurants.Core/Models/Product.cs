@@ -8,16 +8,12 @@ namespace Restaurants.Core.Models
         public int Id { get; set; }
 
         [Required]
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public double Price { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
-
-        public Product()
-        {
-            Orders = new List<Order>();
-        }
+        [Required]
+        public int Count { get; set; }
     }
 }

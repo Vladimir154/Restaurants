@@ -22,7 +22,7 @@ namespace Restaurants.ViewModels.Admin
 
         public User User { get; set; }
         
-        public new string Username
+        public string Username
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Restaurants.ViewModels.Admin
             }
         }
 
-        public new string Password
+        public string Password
         {
             get
             {
@@ -46,7 +46,7 @@ namespace Restaurants.ViewModels.Admin
             }
         }
 
-        public new string Role
+        public string Role
         {
             get
             {

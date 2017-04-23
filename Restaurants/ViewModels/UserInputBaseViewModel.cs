@@ -20,48 +20,6 @@ namespace Restaurants.ViewModels
             CancelCommand = new RelayCommand(Cancel);
         }
 
-        string _username;
-        public string Username
-        {
-            get
-            {
-                return _username;
-            }
-            set
-            {
-                _username = value;
-                RaisePropertyChanged("Username");
-            }
-        }
-
-        string _password;
-        public string Password
-        {
-            get
-            {
-                return _password;
-            }
-            set
-            {
-                _password = value;
-                RaisePropertyChanged("Password");
-            }
-        }
-
-        string _role;
-        public string Role
-        {
-            get
-            {
-                return _role;
-            }
-            set
-            {
-                _role = value;
-                RaisePropertyChanged("Role");
-            }
-        }
-
         public RelayCommand ConfirmCommand { get; set; }
         protected abstract void Confirm(object param);
 

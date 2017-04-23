@@ -48,6 +48,8 @@ namespace Restaurants.Core.Services
                     return RoleEnum.Manager;
                 case "admin":
                     return RoleEnum.Admin;
+                case "waiter":
+                    return RoleEnum.Waiter;
                 default:
                     return RoleEnum.Visitor;
             }
