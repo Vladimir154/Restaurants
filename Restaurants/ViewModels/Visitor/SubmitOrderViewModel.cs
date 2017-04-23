@@ -64,7 +64,7 @@ namespace Restaurants.ViewModels.Visitor
                 dbContext.Orders.Add(new Core.Models.Order
                 {
                     Username = AuthenticationService.CurrentUserName,
-                    Product = DbContext.Products.FirstOrDefault(p => p.Name == Name),
+                    ProductName = Name,
                     Count = Convert.ToInt32(Count)
                 });
 

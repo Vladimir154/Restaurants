@@ -66,9 +66,9 @@ namespace Restaurants.ViewModels.Admin
                 return;
             }
 
-            if(Role != "visitor" && Role != "manager" && Role != "admin")
+            if(Role != "visitor" && Role != "manager" && Role != "admin" && Role != "waiter")
             {
-                MessageBox.Show("Возможные роли:\n\nvisitor\nmanager\nadmin", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Возможные роли:\n\nvisitor\nmanager\nadmin\nwaiter", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

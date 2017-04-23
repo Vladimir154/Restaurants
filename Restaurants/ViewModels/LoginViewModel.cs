@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using NLog;
+﻿using NLog;
 using Restaurants.Core.Enums;
 using Restaurants.Core.Services;
 using Restaurants.Helpers;
@@ -73,7 +72,7 @@ namespace Restaurants.ViewModels
                     new Views.Manager.MainView().Show();
                     break;
                 case RoleEnum.Waiter:
-                    new MainWindow().Show();
+                    new Views.Waiter.MainView().Show();
                     break;
                 case RoleEnum.Admin:
                     new MainWindow().Show();

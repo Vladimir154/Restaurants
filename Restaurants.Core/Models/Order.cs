@@ -11,7 +11,7 @@ namespace Restaurants.Core.Models
         public string Username { get; set; }
 
         [Required]
-        public Product Product { get; set; }
+        public string ProductName { get; set; }
 
         [Required]
         public int Count { get; set; }
