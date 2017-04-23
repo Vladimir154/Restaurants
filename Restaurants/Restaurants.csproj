@@ -111,8 +111,7 @@
     <Compile Include="ViewModels\Manager\EditProductViewModel.cs" />
     <Compile Include="ViewModels\Manager\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\Visitor\AddOrderViewModel.cs" />
-    <Compile Include="ViewModels\Visitor\DeleteOrderViewModel.cs" />
+    <Compile Include="ViewModels\Visitor\SubmitOrderViewModel.cs" />
     <Compile Include="ViewModels\Visitor\MainViewModel.cs" />
     <Compile Include="ViewModels\Waiter\AcceptOrderViewModel.cs" />
     <Compile Include="ViewModels\Waiter\MainViewModel.cs" />
@@ -127,6 +126,12 @@
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Visitor\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Visitor\SubmitOrderView.xaml.cs">
+      <DependentUpon>SubmitOrderView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Admin\AddUserView.xaml">
       <SubType>Designer</SubType>
@@ -183,6 +188,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Visitor\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Visitor\SubmitOrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

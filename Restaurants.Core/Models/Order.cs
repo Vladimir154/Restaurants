@@ -1,18 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Restaurants.Core.Models
 {
     public class Order
     {
         public int Id { get; set; }
-        public User User { get; set; }
+
+        [Required]
+        public string Username { get; set; }
+
+        [Required]
+        public Product Product { get; set; }
+
+        [Required]
+        public int Count { get; set; }
         public DateTime OrderedDate { get; set; }
-        public ICollection<Product> OrderedProducts { get; set; }
 
         public Order()
         {
-            OrderedProducts = new List<Product>();
+            OrderedDate = DateTime.Now;
         }
     }
 }

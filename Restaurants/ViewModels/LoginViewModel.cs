@@ -66,6 +66,7 @@ namespace Restaurants.ViewModels
             }
 
             logger.Info($"User '{Username}' logged in");
+
             switch (AuthenticationService.GetRole(Username))
             {
                 case RoleEnum.Manager:
@@ -78,7 +79,7 @@ namespace Restaurants.ViewModels
                     new MainWindow().Show();
                     break;
                 default:
-                    new MainWindow().Show();
+                    new Views.Visitor.MainView().Show();
                     break;
             }
             NotifyWindowToClose();
@@ -115,7 +116,7 @@ namespace Restaurants.ViewModels
                     new MainWindow().Show();
                     break;
                 default:
-                    new MainWindow().Show();
+                    new Views.Visitor.MainView().Show();
                     break;
             }
 

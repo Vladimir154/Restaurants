@@ -11,6 +11,11 @@ namespace Restaurants.Core.Services
     {
         private static readonly AppDbContext _dbContext = new AppDbContext();
 
+        public static string CurrentUserName
+        {
+            get; private set;
+        }
+
         public static bool Register(string username, string password)
         {
             if (_dbContext.Users.FirstOrDefault(u => u.Username == username) != null)
@@ -24,6 +29,7 @@ namespace Restaurants.Core.Services
                     Role = "visitor"
                 });
 
+            CurrentUserName = username;
             _dbContext.SaveChanges();
             return true;
         }
@@ -35,7 +41,12 @@ namespace Restaurants.Core.Services
             if (user == null)
                 return false;
 
-            return PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password);
+            var logged = PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password);
+
+            if(logged)
+                CurrentUserName = username;
+
+            return logged;
         }
 
         public static RoleEnum GetRole(string username)
