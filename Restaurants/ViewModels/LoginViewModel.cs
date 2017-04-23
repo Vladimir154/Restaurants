@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
+using NLog;
 using Restaurants.Core.Services;
 using Restaurants.Helpers;
 using System.Windows;
@@ -15,6 +16,8 @@ namespace Restaurants.ViewModels
             Username = "";
             Password = "";
         }
+
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         string _username;
         public string Username
@@ -57,9 +60,11 @@ namespace Restaurants.ViewModels
             if (!AuthenticationService.Login(Username, Password))
             {
                 MessageBox.Show("Неверное имя пользователя или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                logger.Warn($"Invalid attempt to login by user {Username}");
                 return;
             }
 
+            logger.Info($"User '{Username}' logged in");
             new MainWindow().Show();
             NotifyWindowToClose();
         }
@@ -71,9 +76,11 @@ namespace Restaurants.ViewModels
             if (!AuthenticationService.Register(Username, Password))
             {
                 MessageBox.Show("Имя уже занято", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                logger.Warn($"Invalid attempt to register nickname {Username}");
                 return;
             }
 
+            logger.Info($"User {Username} registered");
             new MainWindow().Show();
             NotifyWindowToClose();
         }
