@@ -24,6 +24,7 @@ namespace Restaurants.ViewModels.Admin
             EditUserCommand = new RelayCommand(EditUser);
             DeleteUserCommand = new RelayCommand(DeleteUser);
             OpenSettingsCommand = new RelayCommand(OpenSettings);
+            LogoutCommand = new RelayCommand(Logout);
         }
 
         #region Fields
@@ -141,6 +142,13 @@ namespace Restaurants.ViewModels.Admin
             RaisePropertyChanged("WindowBackgroundColor");
             RaisePropertyChanged("BorderBackgroundColor");
             RaisePropertyChanged("FontColor");
+        }
+
+        public RelayCommand LogoutCommand { get; set; }
+        void Logout(object parameter)
+        {
+            NotifyWindowToHide();
+            new LoginView().Show();
         }
         #endregion
 
