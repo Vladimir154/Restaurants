@@ -72,6 +72,12 @@ namespace Restaurants.ViewModels
         public RelayCommand RegisterCommand { get; set; }
         void Register(object parameter)
         {
+            if (!Validate())
+            {
+                MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             // регистрация через сервис
             if (!AuthenticationService.Register(Username, Password))
             {
@@ -83,6 +89,11 @@ namespace Restaurants.ViewModels
             logger.Info($"User {Username} registered");
             new MainWindow().Show();
             NotifyWindowToClose();
+        }
+
+        bool Validate()
+        {
+            return !(string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password));
         }
     }
 }
