@@ -124,7 +124,7 @@
                                 <DataGridTextColumn Header="Id"
                                     Binding="{Binding Id}"/>
                                 <DataGridTextColumn Header="Product name"
-                                     Binding="{Binding Name}" Width="*"/>
+                                     Binding="{Binding ProductName}" Width="*"/>
                                 <DataGridTextColumn Header="Price"
                                     Binding="{Binding Price}"/>
                                 <DataGridTextColumn Header="Count"
