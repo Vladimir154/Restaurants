@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Restaurant" Height="600" Width="800"
          DataContext="{DynamicResource MainViewModel}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        Background="{Binding WindowBackgroundColor}">
+        Background="{Binding WindowBackgroundColor}" WindowStyle="None" MouseDown="Window_MouseDown">
     <Window.Resources>
         <admin:MainViewModel x:Key="MainViewModel"/>
         <Storyboard x:Key="showLeftMenu" >
@@ -114,7 +114,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <DataGrid Background="{Binding WindowBackground}" IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,10,0,0" Height="500">
+                        <DataGrid Background="{Binding WindowBackground}" IsReadOnly="True" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" HorizontalAlignment="Center" Width="750" Margin="25,30,0,0" Height="500">
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridRow">
                                     <Setter Property="Background" Value="{Binding BorderBackgroundColor}"></Setter>
@@ -130,6 +130,6 @@
         <Button Content="Add user" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
         <Button Content="Edit user" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
         <Button Content="Delete user" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
-
+        <Button x:Name="CloseBtn" Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="x" HorizontalAlignment="right" Margin="0,5,10,0" VerticalAlignment="Top" Width="15" Click="CloseBtn_Click"/>
     </Grid>
 </Window>

@@ -52,5 +52,15 @@ namespace Restaurants
                 btnShow.Visibility = Visibility.Visible;
             }
         }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
