@@ -141,7 +141,7 @@
             </ScrollViewer>
         </Grid>
         <TextBlock Text="Фильтр:" Foreground="{Binding FontColor}" Margin="25,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="FilterQueryTxtBox" Background="{Binding BorderBackgroundColor}" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox x:Name="FilterQueryTxtBox" Foreground="{Binding FontColor}" Background="{Binding BorderBackgroundColor}" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
         <Button Content="Add product" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
         <Button Content="Edit product" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
         <Button Content="Delete product" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
