@@ -30,7 +30,10 @@ namespace Restaurants.ViewModels.Admin
         private ObservableCollection<User> _users;
         public ObservableCollection<User> Users
         {
-            get { return _users; }
+            get
+            {
+                return new ObservableCollection<User>(_users.Select(u => { u.Password = "****"; return u; }).ToList());
+            }
             set
             {
                 _users = value;
