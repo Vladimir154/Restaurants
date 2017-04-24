@@ -18,8 +18,8 @@
 
         <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="110,70,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="110,110,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Command="{Binding LoginCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#afcbf7" Content="Login" HorizontalAlignment="Left" Margin="50,200,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Command="{Binding RegisterCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#afcbf7" Content="Register" HorizontalAlignment="Right" Margin="0,200,50,0" VerticalAlignment="Top" Width="75"/>
+        <Button ToolTip="Войти" Command="{Binding LoginCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#afcbf7" Content="Login" HorizontalAlignment="Left" Margin="50,200,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button ToolTip="Зарегистрироваться" Command="{Binding RegisterCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#afcbf7" Content="Register" HorizontalAlignment="Right" Margin="0,200,50,0" VerticalAlignment="Top" Width="75"/>
         <Button Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="x" HorizontalAlignment="right" Margin="0,5,10,0" VerticalAlignment="Top" Width="15" Click="Button_Click"/>
     </Grid>
 </Window>
