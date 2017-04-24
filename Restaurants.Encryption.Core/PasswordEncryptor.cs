@@ -2,9 +2,9 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Restaurants.Core.Helpers
+namespace Restaurants.Encryption.Core
 {
-    public class PasswordEncryptionHelper
+    public class PasswordEncryptor
     {
         public static string ComputeHash(string plainText, string hashAlgorithm, byte[] saltBytes)
         {

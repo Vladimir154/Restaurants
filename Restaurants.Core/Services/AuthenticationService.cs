@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Restaurants.Core.Helpers;
 using Restaurants.Core.Enums;
+using Restaurants.Encryption.Core;
 
 namespace Restaurants.Core.Services
 {
@@ -28,7 +29,7 @@ namespace Restaurants.Core.Services
                     new User
                     {
                         Username = username,
-                        Password = PasswordEncryptionHelper.ComputeHash(password, "SHA512", null),
+                        Password = PasswordEncryptor.ComputeHash(password, "SHA512", null),
                         Role = "visitor"
                     });
 
@@ -51,7 +52,7 @@ namespace Restaurants.Core.Services
                 if (user == null)
                     return false;
 
-                var logged = PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password);
+                var logged = PasswordEncryptor.VerifyHash(password, "SHA512", user.Password);
 
                 if(logged)
                     CurrentUserName = username;
