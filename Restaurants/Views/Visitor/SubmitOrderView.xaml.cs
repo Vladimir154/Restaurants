@@ -38,5 +38,11 @@ namespace Restaurants.Views.Visitor
         {
             this.DragMove();
         }
+
+        private void UIElement_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+                e.Handled = true;
+        }
     }
 }

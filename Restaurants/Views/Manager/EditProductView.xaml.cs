@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using System.Windows.Input;
+using GalaSoft.MvvmLight.Messaging;
 using Restaurants.Core.Models;
 using Restaurants.ViewModels;
 using Restaurants.ViewModels.Admin;
@@ -29,6 +30,12 @@ namespace Restaurants.Views.Manager
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void UIElement_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+                e.Handled = true;
         }
     }
 }

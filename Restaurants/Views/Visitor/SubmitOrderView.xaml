@@ -16,7 +16,7 @@
         <Label Foreground="{Binding FontColor}" Content="Product" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,27,0,0"/>
         <Label Foreground="{Binding FontColor}" Content="Count" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,56,0,0"/>
         <ComboBox ItemsSource="{Binding Products}" SelectedItem="{Binding Name, Mode=TwoWay}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,30,30,0" Text="Select Option" />
-        <TextBox Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,60,30,0"/>
+        <TextBox PreviewTextInput="UIElement_OnPreviewTextInput" Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,60,30,0"/>
         <Button Command="{Binding CancelCommand}"  Background="#ef624c" Content="CANCEL" Width="80" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,110,10"/>
         <Button Command="{Binding ConfirmCommand}" Background="#52ea8f" Content="OK" Width="80" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,-110,10"/>
     </Grid>
