@@ -1,4 +1,5 @@
-﻿using Restaurants.Core.Data;
+﻿using System;
+using Restaurants.Core.Data;
 using Restaurants.Core.Models;
 using System.Threading.Tasks;
 using System.Linq;
@@ -18,35 +19,49 @@ namespace Restaurants.Core.Services
 
         public static bool Register(string username, string password)
         {
-            if (_dbContext.Users.FirstOrDefault(u => u.Username == username) != null)
+            try
+            {
+                if (_dbContext.Users.FirstOrDefault(u => u.Username == username) != null)
+                    return false;
+
+                _dbContext.Users.Add(
+                    new User
+                    {
+                        Username = username,
+                        Password = PasswordEncryptionHelper.ComputeHash(password, "SHA512", null),
+                        Role = "visitor"
+                    });
+
+                CurrentUserName = username;
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
                 return false;
-
-            _dbContext.Users.Add(
-                new User
-                {
-                    Username = username,
-                    Password = PasswordEncryptionHelper.ComputeHash(password, "SHA512", null),
-                    Role = "visitor"
-                });
-
-            CurrentUserName = username;
-            _dbContext.SaveChanges();
-            return true;
+            }
         }
 
         public static bool Login(string username, string password)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.Username == username);
+            try
+            {
+                var user = _dbContext.Users.FirstOrDefault(u => u.Username == username);
 
-            if (user == null)
+                if (user == null)
+                    return false;
+
+                var logged = PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password);
+
+                if(logged)
+                    CurrentUserName = username;
+
+                return logged;
+            }
+            catch (Exception)
+            {
                 return false;
-
-            var logged = PasswordEncryptionHelper.VerifyHash(password, "SHA512", user.Password);
-
-            if(logged)
-                CurrentUserName = username;
-
-            return logged;
+            }
         }
 
         public static RoleEnum GetRole(string username)
