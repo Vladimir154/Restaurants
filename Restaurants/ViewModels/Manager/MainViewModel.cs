@@ -72,7 +72,7 @@ namespace Restaurants.ViewModels.Manager
                 if (_filterQuery != value)
                 {
                     _filterQuery = value;
-                    Products = new ObservableCollection<Product>(_dbContext.Products.Local.Where(p => p.Name.Contains(value)));
+                    Products = new ObservableCollection<Product>(_dbContext.Products.Local.Where(p => RegularExpressions.RegularExpressions.IsMatch(p.Name, $"^{value}")));
                     RaisePropertyChanged("FilterQuery");
                 }
             }

@@ -71,7 +71,7 @@ namespace Restaurants.ViewModels.Admin
                 if (_filterQuery != value)
                 {
                     _filterQuery = value;
-                    Users = new ObservableCollection<User>(_dbContext.Users.Local.Where(u => u.Username.Contains(value)));
+                    Users = new ObservableCollection<User>(_dbContext.Users.Local.Where(u => RegularExpressions.RegularExpressions.IsMatch(u.Username, $"^{value}")));
                     RaisePropertyChanged("FilterQuery");
                 }
             }

@@ -1,6 +1,7 @@
+using Restaurants.Encryption.Core;
+
 namespace Restaurants.Core.Data
 {
-    using Restaurants.Core.Helpers;
     using Restaurants.Core.Models;
     using System.Data.Entity;
 
@@ -23,7 +24,7 @@ namespace Restaurants.Core.Data
             context.Users.Add(new User
             {
                 Username = "Admin",
-                Password = PasswordEncryptionHelper.ComputeHash("1111", "SHA512", null),
+                Password = PasswordEncryptor.ComputeHash("1111", "SHA512", null),
                 Role = "admin"
             });
 
