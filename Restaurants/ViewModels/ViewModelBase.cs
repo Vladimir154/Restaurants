@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
+using Restaurants.Helpers;
 using Restaurants.Registry;
 
 namespace Restaurants.ViewModels
@@ -14,8 +15,15 @@ namespace Restaurants.ViewModels
         internal void RaisePropertyChanged(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+            OpenHelpCommand = new RelayCommand(OpenHelp);
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public RelayCommand OpenHelpCommand { get; set; }
+        protected void OpenHelp(object param)
+        {
+            System.Diagnostics.Process.Start(@"Help\help.html");
+        }
 
         public string WindowBackgroundColor
         {
