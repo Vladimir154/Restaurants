@@ -147,9 +147,15 @@
         </Grid>
         <TextBlock Text="Фильтр:" Foreground="{Binding FontColor}" Margin="25,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <TextBox x:Name="FilterQueryTxtBox" Background="{Binding BorderBackgroundColor}" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
-        <Button ToolTip="Добавление пользователя" Content="Add user" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
-        <Button ToolTip="Редактирование пользователя" Content="Edit user" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
-        <Button ToolTip="Удаление пользователя" Content="Delete user" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
+        <Button ToolTip="Добавление пользователя" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False">
+            <AccessText>_Add user</AccessText>
+        </Button>
+        <Button ToolTip="Редактирование пользователя" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False">
+            <AccessText>_Edit user</AccessText>
+        </Button>
+        <Button ToolTip="Удаление пользователя" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False">
+            <AccessText>_Delete user</AccessText>
+        </Button>
         <Button x:Name="CloseBtn" Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="x" HorizontalAlignment="right" Margin="0,5,10,0" VerticalAlignment="Top" Width="15" Click="CloseBtn_Click"/>
     </Grid>
 </Window>

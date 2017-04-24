@@ -148,9 +148,15 @@
         </Grid>
         <TextBlock Text="Фильтр:" Foreground="{Binding FontColor}" Margin="25,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <TextBox x:Name="FilterQueryTxtBox" Foreground="{Binding FontColor}" Background="{Binding BorderBackgroundColor}" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
-        <Button ToolTip="Добавление продукта" Content="Add product" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
-        <Button ToolTip="Редактирование продукта" Content="Edit product" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
-        <Button ToolTip="Удаление продукта" Content="Delete product" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
+        <Button ToolTip="Добавление продукта" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-230,0,0,10"  Height="30" Width="100" Command="{Binding AddProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False">
+            <AccessText>_Add product</AccessText>
+        </Button>
+        <Button ToolTip="Редактирование продукта" Background="#efe85d" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding EditProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False">
+            <AccessText>_Edit product</AccessText>
+        </Button>
+        <Button ToolTip="Удаление продукта" Background="#ef624c" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="230,0,0,10" Height="30" Width="100" Command="{Binding DeleteProductCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False">
+            <AccessText>_Delete product</AccessText>
+        </Button>
         <Button x:Name="CloseBtn" Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="x" HorizontalAlignment="right" Margin="0,5,10,0" VerticalAlignment="Top" Width="15" Click="CloseBtn_Click"/>
     </Grid>
 </Window>

@@ -148,7 +148,9 @@
         </Grid>
         <TextBlock Text="Фильтр:" Foreground="{Binding FontColor}" Margin="25,0,0,16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <TextBox x:Name="FilterQueryTxtBox" Background="{Binding BorderBackgroundColor}" Margin="75,0,0,15" HorizontalAlignment="Left" Width="100" VerticalAlignment="Bottom" Text="{Binding FilterQuery, UpdateSourceTrigger=PropertyChanged}" />
-        <Button ToolTip="Создание заказа" Content="Сделать заказ" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding SubmitOrderCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False"/>
+        <Button ToolTip="Создание заказа" Background="#52ea8f" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10"  Height="30" Width="100" Command="{Binding SubmitOrderCommand}" CommandParameter="{Binding Text, ElementName=tb1}" Focusable="False">
+            <AccessText>_Create order</AccessText>
+        </Button>
         <Button x:Name="CloseBtn" Background="{Binding BorderBackgroundColor}" Foreground="{Binding FontColor}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="x" HorizontalAlignment="right" Margin="0,5,10,0" VerticalAlignment="Top" Width="15" Click="CloseBtn_Click"/>
     </Grid>
 </Window>
