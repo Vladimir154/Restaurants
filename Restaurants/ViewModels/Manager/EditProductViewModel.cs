@@ -75,8 +75,10 @@ namespace Restaurants.ViewModels.Manager
 
         bool Validate()
         {
+            int a;
+            double b;
             return !(string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(Price) || string.IsNullOrEmpty(Count))
-                && (int.TryParse(Count, out int a) && double.TryParse(Price, out double b));
+                && (int.TryParse(Count, out a) && double.TryParse(Price, out b));
         }
 
     }

@@ -76,8 +76,9 @@ namespace Restaurants.ViewModels.Visitor
 
         bool Validate()
         {
+            int a;
             return !(string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(Count))
-                   && (int.TryParse(Count, out int a));
+                   && (int.TryParse(Count, out a));
         }
     }
 }
