@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
@@ -24,6 +25,7 @@ namespace Restaurants.ViewModels.Waiter
             AcceptOrderCommand = new RelayCommand(AcceptOrder);
             OpenSettingsCommand = new RelayCommand(OpenSettings);
             LogoutCommand = new RelayCommand(Logout);
+            ExportToExcelCommand = new RelayCommand(ExportToExcel);
         }
 
         #region Fields
@@ -119,6 +121,15 @@ namespace Restaurants.ViewModels.Waiter
         {
             NotifyWindowToHide();
             new LoginView().Show();
+        }
+
+        public RelayCommand ExportToExcelCommand { get; set; }
+        void ExportToExcel(object parameter)
+        {
+            new ExportToExcel<Order>()
+            {
+                dataToPrint = new List<Order>(Orders)
+            }.GenerateReport();
         }
         #endregion
 

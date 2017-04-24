@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
@@ -26,6 +27,7 @@ namespace Restaurants.ViewModels.Manager
             DeleteProductCommand = new RelayCommand(DeleteProduct);
             OpenSettingsCommand = new RelayCommand(OpenSettings);
             LogoutCommand = new RelayCommand(Logout);
+            ExportToExcelCommand = new RelayCommand(ExportToExcel);
         }
 
         #region Fields
@@ -150,6 +152,15 @@ namespace Restaurants.ViewModels.Manager
         {
             NotifyWindowToHide();
             new LoginView().Show();
+        }
+
+        public RelayCommand ExportToExcelCommand { get; set; }
+        void ExportToExcel(object parameter)
+        {
+            new ExportToExcel<Product>()
+            {
+                dataToPrint = new List<Product>(Products)
+            }.GenerateReport();
         }
         #endregion
 
