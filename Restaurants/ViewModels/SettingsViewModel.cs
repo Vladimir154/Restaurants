@@ -2,6 +2,7 @@
 using Restaurants.Core.Services;
 using System;
 using System.Collections.ObjectModel;
+using Restaurants.Registry;
 
 namespace Restaurants.ViewModels
 {

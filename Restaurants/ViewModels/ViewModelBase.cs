@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Threading;
+using Restaurants.Registry;
 
 namespace Restaurants.ViewModels
 {

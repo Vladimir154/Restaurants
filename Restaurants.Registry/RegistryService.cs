@@ -1,8 +1,6 @@
-﻿using Microsoft.Win32;
-using Restaurants.Core.Enums;
-using System;
+﻿using Restaurants.Core.Enums;
 
-namespace Restaurants.Core.Services
+namespace Restaurants.Registry
 {
     public class SettingsService
     {
@@ -25,22 +23,22 @@ namespace Restaurants.Core.Services
         // получение темы с реестра
         static ThemeEnum GetCurrentTheme()
         {
-            var currentTheme = Registry.GetValue(keyName, "Theme", null);
+            var currentTheme = Microsoft.Win32.Registry.GetValue(keyName, "Theme", null);
 
             if (currentTheme != null)
                 return (currentTheme as string) == "Light" ? ThemeEnum.Light : ThemeEnum.Dark;
 
-            Registry.SetValue(keyName, "Theme", "Light");
+            Microsoft.Win32.Registry.SetValue(keyName, "Theme", "Light");
             return ThemeEnum.Light;
         }
 
         // сохранение темы в реестр
         static void SetCurrentTheme(ThemeEnum theme)
         {
-            if(theme == ThemeEnum.Light)
-                Registry.SetValue(keyName, "Theme", "Light");
+            if (theme == ThemeEnum.Light)
+                Microsoft.Win32.Registry.SetValue(keyName, "Theme", "Light");
             else
-                Registry.SetValue(keyName, "Theme", "Dark");
+                Microsoft.Win32.Registry.SetValue(keyName, "Theme", "Dark");
         }
     }
 }
